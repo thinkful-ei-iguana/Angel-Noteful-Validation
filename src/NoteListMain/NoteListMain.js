@@ -3,28 +3,34 @@ import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Note from '../Note/Note'
 import CircleButton from '../CircleButton/CircleButton'
-import './NoteListMain.css'
 import context from './../context'
+import PropTypes from 'prop-types'
+import { getNotesForFolder} from '../notes-helpers'
+import './NoteListMain.css'
+
 
 export default class NoteListMain extends Component {
-
+  static defaultProps = {
+    match : {
+      params:{}
+    }
+  }
   static contextType = context;
 
   render() {
-    const { notes } = this.context
-    const { history } = this.props
-    console.log( this.props.history )
-
+    const { folderId } = this.props.match.params
+    const { notes=[] } = this.context
+    const notesForFolder = getNotesForFolder(notes, folderId)
+  
     return ( <section className='NoteListMain'>
       <ul>
         {
-          notes.map( note => 
+          notesForFolder.map( note => 
             <li 
               key={note.id}>
               <Note 
                 id={note.id} 
-                name={note.name} 
-                history={history} 
+                name={note.name}  
                 modified={note.modified}
               />
           </li> 
@@ -42,6 +48,6 @@ export default class NoteListMain extends Component {
   }
 }
 
-NoteListMain.defaultProps = {
-  notes: []
+NoteListMain.propTypes = {
+  match:PropTypes.shape({params:PropTypes.object})
 }
