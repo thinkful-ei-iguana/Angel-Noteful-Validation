@@ -4,7 +4,8 @@ import React from "react";
   notes: [],
   folders: [],
   deleteNote: () => {},
-  addFolder: () => {}
+  addFolder: () => {},
+  addNote:()=>{},
 });
 
 

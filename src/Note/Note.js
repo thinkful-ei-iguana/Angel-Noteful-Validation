@@ -31,7 +31,7 @@ export default class Note extends Component {
         return res.json()
     })
     .then( ()=>{
-      this.context.onDeleteNote(noteId)
+      this.context.deleteNote(noteId)
       this.props.onDeleteNote(noteId)
     })
     .catch(error => {

@@ -23,6 +23,6 @@ class Error extends React.Component {
   }
 }
 
-Error.PropTypes={children: PropTypes.oneOfType([string, PropTypes.array])}
+Error.propTypes={children: PropTypes.oneOfType([PropTypes.string, PropTypes.array])}
 
 export default Error
