@@ -15,12 +15,9 @@ export default class Note extends Component {
 
   static contextType = context;
 
-  handleDeleteClicked = (e)=> {
+  handleDeleteClicked = e => {
     e.preventDefault();
     const noteId = this.props.id;
-    // const { handleDelete } = this.context;
-    // handleDelete( id ); 
-    // return history.push('/');
     fetch(`${config.API_ENDPOINT}/notes/${noteId}`, {
       method: 'DELETE',
       headers: {'contentType' : 'application/json'}

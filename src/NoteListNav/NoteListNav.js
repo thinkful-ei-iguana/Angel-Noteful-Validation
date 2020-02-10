@@ -30,9 +30,9 @@ class NoteListNav extends React.Component {
         </ul>
         <div className='NoteListNav__button-wrapper'>
           <CircleButton
-            // tag={Link}
+            tag={Link}
             to='/add-folder'
-            // type='button'
+            type='button'
             className='NoteListNav__add-folder-button'
           >
             <FontAwesomeIcon icon='plus' />

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import context from '../context'
+import config from './../config';
 
 export class AddFolder extends Component {
   static contextType = context;
@@ -8,7 +9,7 @@ export class AddFolder extends Component {
 
     handleAddNewFolder = (e) => {
       e.preventDefault();
-      this.props.history.push(`/`)
+      
       const folderName = {
         name: e.target.addFolder.value
       }
@@ -22,7 +23,7 @@ export class AddFolder extends Component {
         })
         .then(response => {
           if (response.ok) {
-            return response.json()
+            return response.json();
           } else {
             return response.json().then( e => Promise.reject(e))
           }

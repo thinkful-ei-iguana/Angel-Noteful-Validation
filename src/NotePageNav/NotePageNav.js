@@ -7,7 +7,14 @@ import { findNote, findFolder} from '../notes-helpers'
 import './NotePageNav.css'
 
 class NotePageNav extends React.Component {
-  static defaultProps = {history:{ goBack:()=>{} }, match:{ params:{} } }
+  static defaultProps = { 
+    history:{ 
+      goBack:()=>{} 
+    }, 
+    match:{ 
+      params:{}
+    }
+  }
   static contextType = context
 
   render(){
