@@ -3,7 +3,6 @@ import Note from '../Note/Note';
 import './NotePageMain.css';
 import context from '../context';
 import { findNote } from '../notes-helpers';
-import PropTypes from 'prop-types';
 
 
 
@@ -27,7 +26,7 @@ class NotePageMain extends React.Component {
       <section className='NotePageMain'>
         <Note
           id={note.id}
-          name={note.name}
+          name={note.note_name}
           modified={note.modified}
           onDeleteNote={this.handleDelete}
         />
@@ -39,10 +38,6 @@ class NotePageMain extends React.Component {
       </section>
     )
   }
-}
-
-NotePageMain.propTypes = {
-  match: PropTypes.shape({params: PropTypes.object})
 }
 
 export default NotePageMain

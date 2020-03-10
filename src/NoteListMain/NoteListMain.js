@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Note from '../Note/Note'
 import CircleButton from '../CircleButton/CircleButton'
 import context from './../context'
-import PropTypes from 'prop-types'
 import { getNotesForFolder} from '../notes-helpers'
 import './NoteListMain.css'
 
@@ -30,7 +29,7 @@ export default class NoteListMain extends Component {
               key={note.id}>
               <Note 
                 id={note.id} 
-                name={note.name}  
+                name={note.note_name}  
                 modified={note.modified}
               />
           </li> 
@@ -38,7 +37,12 @@ export default class NoteListMain extends Component {
         }
       </ul>
       <div className='NoteListMain__button-container'>
-        <CircleButton tag={Link} to='/add-note' type='button' className='NoteListMain__add-note-button'>
+        <CircleButton 
+          tag={Link} 
+          to='/add-note' 
+          type='button' 
+          className='NoteListMain__add-note-button'
+        >
           <FontAwesomeIcon icon='plus'/>
           <br/>
           Note
@@ -46,8 +50,4 @@ export default class NoteListMain extends Component {
       </div>
     </section> )
   }
-}
-
-NoteListMain.propTypes = {
-  match:PropTypes.shape({params:PropTypes.object})
 }
