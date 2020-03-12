@@ -24,7 +24,7 @@ export class AddFolder extends Component {
     e.preventDefault();
     
     const folderName = {
-      folder_name: e.target.addFolder.value
+      name: e.target.addFolder.value
     }
     fetch(`${config.API_ENDPOINT}/folders`,
       {

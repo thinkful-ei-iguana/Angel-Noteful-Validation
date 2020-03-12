@@ -59,7 +59,7 @@ class AddNote extends React.Component {
         <select required id="addNoteFolderId" name="addNoteFolderId">
           {folders.map(f => (
             <option key={f.id} value={f.id}>
-              {f.folder_name}
+              {f.name}
             </option>
           ))}
         </select>

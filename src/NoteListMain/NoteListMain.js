@@ -18,10 +18,11 @@ export default class NoteListMain extends Component {
 
   render() {
     const { folderId } = this.props.match.params
-    const { notes=[] } = this.context
+    const { notes = [] } = this.context
     const notesForFolder = getNotesForFolder(notes, folderId)
   
-    return ( <section className='NoteListMain'>
+    return ( 
+    <section className='NoteListMain'>
       <ul>
         {
           notesForFolder.map( note => 
@@ -29,7 +30,7 @@ export default class NoteListMain extends Component {
               key={note.id}>
               <Note 
                 id={note.id} 
-                name={note.note_name}  
+                name={note.name}  
                 modified={note.modified}
               />
           </li> 
@@ -48,6 +49,7 @@ export default class NoteListMain extends Component {
           Note
         </CircleButton>
       </div>
-    </section> )
+    </section> 
+    )
   }
 }
