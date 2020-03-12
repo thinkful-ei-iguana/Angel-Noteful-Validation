@@ -22,7 +22,8 @@ class AddNote extends React.Component {
       if(response.ok){
         return response.json();
       } else {
-        return response.json().then(e => Promise.reject(e))
+        return response.json()
+          .then(e => Promise.reject(e))
       }
     })
     .then(resJson => {
@@ -58,7 +59,7 @@ class AddNote extends React.Component {
         <select required id="addNoteFolderId" name="addNoteFolderId">
           {folders.map(f => (
             <option key={f.id} value={f.id}>
-              {f.name}
+              {f.folder_name}
             </option>
           ))}
         </select>

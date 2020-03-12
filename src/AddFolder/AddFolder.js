@@ -24,7 +24,7 @@ export class AddFolder extends Component {
     e.preventDefault();
     
     const folderName = {
-      name: e.target.addFolder.value
+      folder_name: e.target.addFolder.value
     }
     fetch(`${config.API_ENDPOINT}/folders`,
       {
@@ -38,7 +38,8 @@ export class AddFolder extends Component {
         if (response.ok) {
           return response.json();
         } else {
-          return response.json().then( e => Promise.reject(e))
+          return response.json()
+            .then( e => Promise.reject(e))
         }
       })
       .then(resJson => {
