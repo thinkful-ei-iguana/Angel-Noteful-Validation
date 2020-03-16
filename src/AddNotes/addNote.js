@@ -28,6 +28,7 @@ class AddNote extends React.Component {
     })
     .then(resJson => {
       this.context.addNote(resJson);
+      this.props.history.push(`folder/${resJson.folderId}`)
     })
     .catch (console.error);
   };

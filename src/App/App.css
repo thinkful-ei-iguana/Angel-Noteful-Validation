@@ -17,6 +17,9 @@
   height: 100vh;
   overflow: auto;
 }
+label {
+  color: #fff;
+}
 
 .App__header {
   background-color: #0b1f3a;

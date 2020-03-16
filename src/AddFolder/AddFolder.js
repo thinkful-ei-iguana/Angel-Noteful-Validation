@@ -44,6 +44,7 @@ export class AddFolder extends Component {
       })
       .then(resJson => {
         this.context.addFolder(resJson)
+        this.props.history.push('/')
       })
   }
 }
