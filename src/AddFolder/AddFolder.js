@@ -26,12 +26,12 @@ export class AddFolder extends Component {
     const folderName = {
       folder_name: e.target.addFolder.value
     }
-    fetch(`${config.API_ENDPOINT}/folders`,
-      {
+    fetch(`${config.API_ENDPOINT}/folders`,{
         method: 'POST',
         body: JSON.stringify(folderName),
         headers: {
-          'Content-Type' : 'application/json'
+          'Content-Type' : 'application/json',
+          'Access-Control-Allow-Origin' : '*'
         }
       })
       .then(response => {

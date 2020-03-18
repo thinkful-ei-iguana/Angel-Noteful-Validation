@@ -16,20 +16,21 @@ export default class Note extends Component {
 
   handleDeleteClicked = e => {
     e.preventDefault();
-    const noteId = this.props.id;
+    const note_id = this.props.id;
 
-    fetch(`${config.API_ENDPOINT}/notes/${noteId}`, {
+    fetch(`${config.API_ENDPOINT}/notes/${note_id}`, {
       method: 'DELETE',
-      headers: {'contentType' : 'application/json'},
+      headers: {
+        'contentType' : 'application/json'
+      },
     })
     .then(res => {
       if(!res.ok)
         return res.json().then(e => Promise.reject(e))
-        return res.json()
     })
-    .then( ()=>{
-      this.context.deleteNote(noteId)
-      this.props.onDeleteNote(noteId)
+    .then( ()=> {
+      this.context.deleteNote(note_id)
+      this.props.onDeleteNote(note_id)
     })
     .catch(error => {
       console.error({error})
@@ -43,6 +44,7 @@ export default class Note extends Component {
         <h2 className='Note__title'>
           <Link to={`/note/${ id }`}>
             {name}
+            {console.log(name)}
           </Link>
         </h2>
         <button className='Note__delete' type='button' onClick={this.handleDeleteClicked}>

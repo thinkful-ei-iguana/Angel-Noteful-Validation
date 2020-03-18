@@ -7,28 +7,33 @@ class AddNote extends React.Component {
 
   addNewNote = (e) => {
     e.preventDefault();
-    const note = {
-      name: e.target["addNoteName"].value,
-      modified: new Date(),
-      folderId: e.target["addNoteFolderId"].value,
+
+    const newNote = {
+      note_name: e.target["addNoteName"].value,
+      date_modified: new Date(),
+      folder_id: e.target["addNoteFolderId"].value,
       content: e.target["addNoteContent"].value
-    };
+    }
+
     fetch(`${config.API_ENDPOINT}/notes`,{
       method: 'POST',
-      body: JSON.stringify(note),
-      headers: {'Content-Type': 'application/json'}
+      body: JSON.stringify(newNote),
+      headers: {
+        'Content-Type': 'application/json'
+      }
     })
     .then(response => {
       if(response.ok){
+        this.props.history.push('/');
         return response.json();
       } else {
         return response.json()
           .then(e => Promise.reject(e))
       }
     })
+    
     .then(resJson => {
       this.context.addNote(resJson);
-      this.props.history.push(`folder/${resJson.folderId}`)
     })
     .catch (console.error);
   };
@@ -58,9 +63,9 @@ class AddNote extends React.Component {
         
         <label htmlFor="addNoteFolderId"> Note Folder </label>
         <select required id="addNoteFolderId" name="addNoteFolderId">
-          {folders.map(f => (
-            <option key={f.id} value={f.id}>
-              {f.name}
+          {folders.map(folder => (
+            <option key={folder.id} value={folder.id}>
+              {folder.folder_name}
             </option>
           ))}
         </select>
